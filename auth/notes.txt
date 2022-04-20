@@ -1,0 +1,32 @@
+Let’s try to register a new user :
+
+mutation {
+  register(
+    email: "new_user@email.com",
+    username: "new_user",
+    password1: "supersecretpassword",
+    password2: "supersecretpassword",
+  ) {
+    success,
+    errors,
+    token,
+    refreshToken
+  }
+}
+
+Check if the new user is really on the database :
+query {
+  users (last: 1){
+    edges {
+      node {
+        id,
+        username,
+        email,
+        isActive,
+        archived,
+        verified,
+        secondaryEmail
+      }
+    }
+  }
+}
